@@ -58,7 +58,6 @@ function main_content()
           }
       }
 </pre>
-
 				<p>can be described using JCR as:</p>
 <pre>
        {
@@ -76,7 +75,11 @@ function main_content()
            }
        }
 </pre>
-				<p>or alternatively, using named rules to avoid some of the type repetition, as:</p>
+				<p>
+					In the above, the sub-rules <code>"Width" : 0..1280</code> and <code>"Height" : 0..1024</code>
+					are repeated multiple times.  To make this simpler and easier to manage, each can be defined in 
+					their own named rule, and the rule name can be used in place of the sub-rules; giving:
+				</p>
 <pre>
        {
            "Image" : {
@@ -85,18 +88,64 @@ function main_content()
                "Title" : string,
                "Thumbnail" : {
                    "Url" : uri,
-                   $width,
-                   $height
+				   $width,
+				   $height
+               },
+               "Animated" : boolean,
+               "IDs" : [ integer * ]
+           }
+       }
+
+       $width = "Width" : 0..1280
+       $height = "Height" : 0..1024
+</pre>
+		<p>
+			As <code>$width</code> and <code>$height</code> are often used together, the above can
+			be further simplified by putting them in a group and using the group as a mixin. Below,
+			this is done in the group named <code>$dimensions</code>.
+		</p>
+<pre>
+       {
+           "Image" : {
+               $dimensions,
+               "Title" : string,
+               "Thumbnail" : {
+                   "Url" : uri,
+                   $dimensions
+               },
+               "Animated" : boolean,
+               "IDs" : [ integer * ]
+           }
+       }
+
+       $dimensions = ( $width, $height )
+       $width = "Width" : 0..1280
+       $height = "Height" : 0..1024
+</pre>
+		<p>
+			Rules can also be used to specify types.  For example, below the <code>integer</code> type
+			in the <code>"IDs"</code> object member is replaced by <code>$id</code>:
+		</p>
+<pre>
+       {
+           "Image" : {
+               $dimensions,
+               "Title" : string,
+               "Thumbnail" : {
+                   "Url" : uri,
+                   $dimensions
                },
                "Animated" : boolean,
                "IDs" : [ $id * ]
            }
        }
 
+       $dimensions = ( $width, $height )
        $width = "Width" : 0..1280
        $height = "Height" : 0..1024
        $id = integer
 </pre>
+
 				<h3>
 				<a id="specification" class="anchor" href="#specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specification</h3>
 
