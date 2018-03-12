@@ -43,37 +43,37 @@ function main_content()
 				<p>As an example, the following JSON taken from RFC 7159:</p>
 
 <pre>
-      {
-        "Image": {
-            "Width":  800,
-            "Height": 600,
-            "Title":  "View from 15th Floor",
-            "Thumbnail": {
-                "Url":    "http://www.example.com/image/481989943",
-                "Height": 125,
-                "Width":  100
-            },
-            "Animated" : false,
-            "IDs": [116, 943, 234, 38793]
-          }
-      }
+{
+    "Image": {
+        "Width":  800,
+        "Height": 600,
+        "Title":  "View from 15th Floor",
+        "Thumbnail": {
+            "Url":    "http://www.example.com/image/481989943",
+            "Height": 125,
+            "Width":  100
+        },
+    "Animated" : false,
+    "IDs": [116, 943, 234, 38793]
+    }
+}
 </pre>
 				<p>can be described using JCR as:</p>
 <pre>
-       {
-           "Image" : {
-               "Width" : 0..1280,
-               "Height" : 0..1024,
-               "Title" : string,
-               "Thumbnail" : {
-                   "Url" : uri,
-                   "Width" : 0..1280,
-                   "Height" : 0..1024
-               },
-               "Animated" : boolean,
-               "IDs" : [ integer * ]
-           }
-       }
+{
+    "Image" : {
+        "Width" : 0..1280,
+        "Height" : 0..1024,
+        "Title" : string,
+        "Thumbnail" : {
+            "Url" : uri,
+            "Width" : 0..1280,
+            "Height" : 0..1024
+        },
+        "Animated" : boolean,
+        "IDs" : [ integer * ]
+    }
+}
 </pre>
 				<p>
 					In the above, the sub-rules <code>"Width" : 0..1280</code> and <code>"Height" : 0..1024</code>
@@ -81,23 +81,23 @@ function main_content()
 					their own named rule, and the rule name can be used in place of the sub-rules; giving:
 				</p>
 <pre>
-       {
-           "Image" : {
-               $width,
-               $height,
-               "Title" : string,
-               "Thumbnail" : {
-                   "Url" : uri,
-                   $width,
-                   $height
-               },
-               "Animated" : boolean,
-               "IDs" : [ integer * ]
-           }
-       }
+{
+    "Image" : {
+        $width,
+        $height,
+        "Title" : string,
+        "Thumbnail" : {
+            "Url" : uri,
+            $width,
+            $height
+        },
+        "Animated" : boolean,
+        "IDs" : [ integer * ]
+    }
+}
 
-       $width = "Width" : 0..1280
-       $height = "Height" : 0..1024
+$width = "Width" : 0..1280
+$height = "Height" : 0..1024
 </pre>
 		<p>
 			As <code>$width</code> and <code>$height</code> are often used together, the above can
@@ -105,45 +105,45 @@ function main_content()
 			this is done in the group named <code>$dimensions</code>.
 		</p>
 <pre>
-       {
-           "Image" : {
-               $dimensions,
-               "Title" : string,
-               "Thumbnail" : {
-                   "Url" : uri,
-                   $dimensions
-               },
-               "Animated" : boolean,
-               "IDs" : [ integer * ]
-           }
-       }
+{
+    "Image" : {
+        $dimensions,
+        "Title" : string,
+        "Thumbnail" : {
+            "Url" : uri,
+            $dimensions
+        },
+        "Animated" : boolean,
+        "IDs" : [ integer * ]
+    }
+}
 
-       $dimensions = ( $width, $height )
-       $width = "Width" : 0..1280
-       $height = "Height" : 0..1024
+$dimensions = ( $width, $height )
+$width = "Width" : 0..1280
+$height = "Height" : 0..1024
 </pre>
 		<p>
 			Rules can also be used to specify types.  For example, below the <code>integer</code> type
 			in the <code>"IDs"</code> object member is replaced by <code>$id</code>:
 		</p>
 <pre>
-       {
-           "Image" : {
-               $dimensions,
-               "Title" : string,
-               "Thumbnail" : {
-                   "Url" : uri,
-                   $dimensions
-               },
-               "Animated" : boolean,
-               "IDs" : [ $id * ]
-           }
-       }
+{
+    "Image" : {
+        $dimensions,
+        "Title" : string,
+        "Thumbnail" : {
+            "Url" : uri,
+            $dimensions
+        },
+        "Animated" : boolean,
+        "IDs" : [ $id * ]
+    }
+}
 
-       $dimensions = ( $width, $height )
-       $width = "Width" : 0..1280
-       $height = "Height" : 0..1024
-       $id = integer
+$dimensions = ( $width, $height )
+$width = "Width" : 0..1280
+$height = "Height" : 0..1024
+$id = integer
 </pre>
 
 				<h3>
