@@ -4,7 +4,7 @@
 //
 // $file_bases is an array containing the base names of files to convert
 // without the extensions.  For example:
-//    array( "codalogic", "lmx" )
+//    compile_less( array( "codalogic", "lmx" ) );
 // will convert 'codalogic.less' to 'codalogic.css' and 'lmx.less' to lmx.css'.
 
 function compile_less( $file_bases )
