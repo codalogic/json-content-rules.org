@@ -24,6 +24,7 @@
 
 		<!-- Bootstrap -->
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,600italic,700italic,600' type='text/css'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Chivo:900' type='text/css'>
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
