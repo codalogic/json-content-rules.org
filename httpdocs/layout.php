@@ -52,7 +52,7 @@
 	</head>
 
 	<body>
-		<div class='container'>
+		<div class='container narrow'>
             <?php
                 //branding_bar();
                 //menu_bar();
