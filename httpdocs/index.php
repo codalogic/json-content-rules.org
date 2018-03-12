@@ -88,8 +88,8 @@ function main_content()
                "Title" : string,
                "Thumbnail" : {
                    "Url" : uri,
-				   $width,
-				   $height
+                   $width,
+                   $height
                },
                "Animated" : boolean,
                "IDs" : [ integer * ]
