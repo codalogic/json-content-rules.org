@@ -160,8 +160,11 @@ function main_content()
 
 				<p>A number of implementations are under development to verify the JCR syntax.  These include:</p>
 
-				<p><a href="https://github.com/arineng/jcrvalidator">Ruby jcrvalidator (Work in Progress)</a><br>
-				<a href="https://github.com/codalogic/cl-jcr-parser">C++ cl-jcr-parser (Work in Progress)</a></p>
+				<p>
+					<a href="https://github.com/arineng/jcrvalidator">Ruby jcrvalidator (Work in Progress)</a><br>
+					<a href="https://bitbucket.org/anewton_1998/jcr_java">Java JCR (Work in Progress)</a><br>
+					<a href="https://github.com/codalogic/cl-jcr-parser">C++ cl-jcr-parser (Work in Progress)</a>
+				</p>
 
 				<h3>
 				<a id="implementations" class="anchor" href="#implementations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Involved</h3>
