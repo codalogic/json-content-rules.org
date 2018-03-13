@@ -170,7 +170,7 @@ a.button span {
 
 code, pre {
   margin-bottom: 30px;
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, "Courier New", Courier, monospace;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", "Courier New", Courier, monospace;
   font-size: 14px;
   color: #222;
 }
