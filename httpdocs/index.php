@@ -233,6 +233,10 @@ $dimensions = ( $width, $height )
 $width = "Width" : 0..1280
 $height = "Height" : 0..1024
 </pre>
+		<p>
+			JCR has many more features to help protocol and software developers.  Have a look at the <a href='#specification'>specification</a> to
+			find out more.
+		</p>
 
 				<h3>
 				<a id="uses" class="anchor" href="#uses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uses</h3>
