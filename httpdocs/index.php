@@ -147,6 +147,33 @@ $id = integer
 </pre>
 
 				<h3>
+				<a id="uses" class="anchor" href="#uses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uses</h3>
+				<p>
+					There are many uses for JCR throughout the protocol and product development life-cycle, and
+					even into deployment.  These include:
+				</p>
+				<ul>
+					<li>helping specification authors concisely and clearly describe complex JSON data
+					  structures.</li>
+
+					<li>aiding software developers to verify their implementations conform to
+					  specifications by validating any generated JSON against
+					  the specified JCR.</li>
+
+					<li>aiding software developers by permitting specification of JCR based test sets.</li>
+
+					<li>aiding software implementors to resolve interoperability issues.</li>
+
+					<li>facilitating monitoring of JSON based protocols via comparison of observed
+					  JSON messages against their JCR specification.</li>
+				</ul>
+				<p>
+					One example of interoperability usage is
+					<a href='https://github.com/arineng/nicinfo'>[NicInfo]</a>, an RDAP client which can use
+					JCR to help RDAP server operators find compatibility issues.
+				</p>
+
+				<h3>
 				<a id="specification" class="anchor" href="#specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specification</h3>
 
 				<p>For more details read the latest specification at
@@ -167,7 +194,7 @@ $id = integer
 				</p>
 
 				<h3>
-				<a id="implementations" class="anchor" href="#implementations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Involved</h3>
+				<a id="get-involved" class="anchor" href="#get-involved" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Involved</h3>
 				<p>Like JCR and want to know more?  Know of an implementation we can list?  Need help making JCR work for you?  Contact us at 
 				<script>mk_e_link('org', 'json-content-rules', 'contact', 'Enter JCR subject:')</script>.</p>
 

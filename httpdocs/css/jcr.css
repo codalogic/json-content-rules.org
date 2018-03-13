@@ -1,3 +1,18 @@
 .container.narrow {
   max-width: 750px;
 }
+ul,
+ol,
+dl {
+  padding-left: 40px;
+}
+ul li {
+  margin-bottom: 10px;
+}
+code {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", "Courier New", Courier, monospace;
+  margin-bottom: 0px;
+}
+pre {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", "Courier New", Courier, monospace;
+}
