@@ -1,6 +1,6 @@
 <?php
 $config = array(
-			"title" => "JCR by example",
+			"title" => "JSON Content Rules (JCR) by example",
 			"menu_key" => "home",
 			"meta_keywords" => "JSON, Schema, JCR, IETF",
 			"meta_description" => "Overview of JSON Content Rules (JCR) for defining JSON message content." );
@@ -58,7 +58,7 @@ function main_content()
     }
 }
 </pre>
-				<p>It can be described using JCR as:</p>
+				<p>To give you a taste of JCR, it can be described using JCR as:</p>
 <pre>
 {
     "Image" : {
@@ -76,167 +76,10 @@ function main_content()
 }
 </pre>
 				<p>
-					In the above, the sub-rules <code>"Width" : 0..1280</code> and <code>"Height" : 0..1024</code>
-					are repeated multiple times.  To make this simpler and easier to manage, each can be defined in 
-					their own named rule, and the rule name can be used in place of the sub-rules; giving:
+					To continue exploring JCR using this example, have a look at the <a href='tutorial'>tutorial</a>.
+					<p>
+					For a more in-depth understanding of JCR take a look at the <a href='specs'>specifications</a>.
 				</p>
-<pre>
-{
-    "Image" : {
-        $width,
-        $height,
-        "Title" : string,
-        "Thumbnail" : {
-            "Url" : uri,
-            $width,
-            $height
-        },
-        "Animated" : boolean,
-        "IDs" : [ integer * ]
-    }
-}
-
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-</pre>
-		<p>
-			As <code>$width</code> and <code>$height</code> are often used together, the above can
-			be further simplified by putting them in a group and using the group as a mixin. Below,
-			this is done in the group named <code>$dimensions</code>:
-		</p>
-<pre>
-{
-    "Image" : {
-        $dimensions,
-        "Title" : string,
-        "Thumbnail" : {
-            "Url" : uri,
-            $dimensions
-        },
-        "Animated" : boolean,
-        "IDs" : [ integer * ]
-    }
-}
-
-$dimensions = ( $width, $height )
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-</pre>
-		<p>
-			Rules can also be used to specify types.  For example, below the <code>integer</code> type
-			in the <code>"IDs"</code> object member is replaced by <code>$id</code>:
-		</p>
-<pre>
-{
-    "Image" : {
-        $dimensions,
-        "Title" : string,
-        "Thumbnail" : {
-            "Url" : uri,
-            $dimensions
-        },
-        "Animated" : boolean,
-        "IDs" : [ $id * ]
-    }
-}
-
-$dimensions = ( $width, $height )
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-$id = integer
-</pre>
-		<p>
-			Or, perhaps the entire <code>"Thumbnail"</code> member could be
-			extracted into a separate rule:
-		</p>
-<pre>
-{
-    "Image" : {
-        $dimensions,
-        "Title" : string,
-        $thumbnail,
-        "Animated" : boolean,
-        "IDs" : [ $id * ]
-    }
-}
-
-$thumbnail =
-    "Thumbnail" : {
-        "Url" : uri,
-        $dimensions
-    }
-
-$dimensions = ( $width, $height )
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-$id = integer
-</pre>
-		<p>
-			If the <code>"Thumbnail"</code> member was optional, this can be
-			indicated using the Kleene <code>?</code> operator:
-		</p>
-<pre>
-{
-    "Image" : {
-        $dimensions,
-        "Title" : string,
-        $thumbnail ?,
-        "Animated" : boolean,
-        "IDs" : [ $id * ]
-    }
-}
-
-$thumbnail =
-    "Thumbnail" : {
-        "Url" : uri,
-        $dimensions
-    }
-
-$dimensions = ( $width, $height )
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-$id = integer
-</pre>
-		<p>
-			JCR allows modular message specification using <code>#import</code> directives.  As screen and image dimensions
-			might be a common, cross-protocol feature, they can be separated into a separate module.
-			Such a module would be incorporated into the example as:
-		</p>
-<pre>
-#import org.ietf.geometry as geometry
-
-{
-    "Image" : {
-        $geometry.dimensions,
-        "Title" : string,
-        $thumbnail ?,
-        "Animated" : boolean,
-        "IDs" : [ $id * ]
-    }
-}
-
-$thumbnail =
-    "Thumbnail" : {
-        "Url" : uri,
-        $geometry.dimensions
-    }
-
-$id = integer
-</pre>
-		<p>
-			Where <code>org.ietf.geometry</code> might be defined as:
-		</p>
-<pre>
-#ruleset-id org.ietf.geometry
-
-$dimensions = ( $width, $height )
-$width = "Width" : 0..1280
-$height = "Height" : 0..1024
-</pre>
-		<p>
-			JCR has many more features to help protocol and software developers.  Have a look at the <a href='#specification'>specification</a> to
-			find out more.
-		</p>
 
 				<h3>
 				<a id="uses" class="anchor" href="#uses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uses</h3>
@@ -266,24 +109,10 @@ $height = "Height" : 0..1024
 				</p>
 
 				<h3>
-				<a id="specification" class="anchor" href="#specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specification</h3>
-
-				<p>For more details read the latest specification at
-				<a href="https://www.ietf.org/internet-drafts/draft-newton-json-content-rules-09.txt">draft-newton-json-content-rules-09.txt</a>.</p>
-
-				<p>JCR can also have co-constraints added to it via directives and annotations.  These are described in (expired)
-				<a href="drafts/draft-cordell-jcr-co-constraints-00.txt">draft-cordell-jcr-co-constraints-00.txt</a>.</p>
-
-				<h3>
-				<a id="implementations" class="anchor" href="#implementations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementations</h3>
-
-				<p>A number of implementations are under development to verify the JCR syntax.  These include:</p>
-
-				<p>
-					<a href="https://github.com/arineng/jcrvalidator">Ruby jcrvalidator (Work in Progress)</a><br>
-					<a href="https://bitbucket.org/anewton_1998/jcr_java">Java JCR (Work in Progress)</a><br>
-					<a href="https://github.com/codalogic/cl-jcr-parser">C++ cl-jcr-parser (Work in Progress)</a>
+				<a id="find-out-more" class="anchor" href="#find-out-more" aria-hidden="true"><span class="octicon octicon-link"></span></a>Find Out More</h3>
+				<p>Find out more about JCR by looking at the <a href='specs'>specifications</a> and <a href='tutorial'>tutorial</a>.
 				</p>
+				<p>You can experiment with JCR using the <a href='checker'>online checker</a>, or by downloading one of the <a href='specs'>implementations</a>.</p>
 
 				<h3>
 				<a id="get-involved" class="anchor" href="#get-involved" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Involved</h3>

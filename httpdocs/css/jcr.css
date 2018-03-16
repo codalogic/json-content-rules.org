@@ -1,3 +1,9 @@
+.position-base {
+  position: relative;
+}
+.padded-box {
+  padding: 20px;
+}
 .container.narrow {
   max-width: 750px;
 }
@@ -21,4 +27,101 @@ pre {
 }
 .humanity_check {
   display: none;
+}
+.header {
+  border-bottom: 4px solid #F2F2F2;
+  margin-bottom: 20px;
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+  background: transparent;
+  color: #D5000D;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #D5000D;
+  font-size: 16px;
+}
+.navbar-default {
+  background: none !important;
+  border-color: #fff;
+}
+.navbar-collapse {
+  border: none;
+}
+.navbar-right {
+  float: none;
+  margin-right: 0;
+}
+.navbar {
+  position: relative;
+  top: 4px;
+  min-height: 0;
+  margin-bottom: 0;
+  border: none;
+}
+.nav.main-nav {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+.nav.main-nav > li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 0 0 15px;
+}
+.nav.main-nav > li > a {
+  border-bottom: 4px solid transparent;
+  color: #D5000D;
+  display: block;
+  font-size: 16px;
+  padding: 5px 0;
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  -o-transition: all 250ms;
+  transition: all 250ms;
+}
+.nav.main-nav > li.active > a {
+  border-bottom-color: #D5000D;
+}
+.nav.main-nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+  border-bottom-color: #F2F2F2;
+}
+.nav.main-nav > li > a:hover {
+  border-bottom-color: #D5000D;
+  color: #D5000D !important;
+  text-decoration: none;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .nav ul li {
+    padding: 0px;
+    margin: 0px 0px 0px 10px;
+    list-style: none;
+    display: inline;
+  }
+}
+@media (max-width: 767px) {
+  .nav.main-nav {
+    padding-bottom: 8px;
+  }
+  .nav.main-nav > li {
+    display: block;
+    margin: 0 0 0 10px;
+    list-style: none;
+    padding: 0;
+    padding-bottom: 4px;
+    text-align: left;
+  }
+  .navbar-right {
+    position: static;
+  }
+  .nav.main-nav > li.active > a {
+    border-bottom: 0;
+    background-color: #F2F2F2;
+  }
+  .nav.main-nav > li > a:hover {
+    border-bottom-color: transparent;
+    background-color: #F2F2F2;
+  }
 }

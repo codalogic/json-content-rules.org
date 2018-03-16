@@ -56,7 +56,7 @@
 		<div class='container narrow'>
             <?php
                 //branding_bar();
-                //menu_bar();
+                menu_bar();
                 main_content();
 			    footer_bar();
 			?>
@@ -85,24 +85,28 @@ function menu_bar()
 {
 ?>
 	<div class="row">
-		<nav role="navigation" class="navbar navbar-codalogic">
-	        <div class="navbar-header">
-	            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle collapsed">
-	                <span class="sr-only">Toggle navigation</span>
-	                <div class="icon-bar"></div> <!-- These three make up the hamburger icon -->
-	                <div class="icon-bar"></div>
-	                <div class="icon-bar"></div>
-	            </button>
+		<div class="col-md-12">
+		    <div class="header">
+		        <nav role="navigation" class="navbar navbar-default navbar-jcr">
+	                <div class="navbar-header">
+	                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle collapsed">
+	                        <span class="sr-only">Toggle navigation</span>
+	                        <div class="icon-bar"></div> <!-- These three make up the hamburger icon -->
+	                        <div class="icon-bar"></div>
+	                        <div class="icon-bar"></div>
+	                    </button>
+	                </div>
+	                <!-- Collection of nav links and other content for toggling -->
+                    <div id="navbarCollapse" class="collapse navbar-collapse">
+                        <ul class="main-nav nav navbar-nav navbar-right">
+	                    <?php
+	                        menu_items();
+	                    ?>
+                        </ul>
+                    </div>
+	            </nav>
 	        </div>
-	        <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav nav-codalogic nav-num-menu-options-xs-7">
-	            <?php
-	                menu_items();
-	            ?>
-                </ul>
-            </div>
-	    </nav>
+	    </div>
 	</div>
 <?php
 }
@@ -110,6 +114,8 @@ function menu_bar()
 function menu_items()
 {
 	menu_item( 'home', 'Home', './' );
+	menu_item( 'tutorial', 'Tutorial', 'tutorial' );
+	menu_item( 'specs', 'Specifications &amp; Implementations', 'specs' );
 	menu_item( 'checker', 'JCR Checker', 'checker' );
 }
 
@@ -131,8 +137,8 @@ function sub_menu_bar( $active_key, $options )
 
     echo "
 	    <div class='row'>
-		    <nav role='navigation' class='navbar navbar-codalogic'>
-                <ul class='nav nav-codalogic nav-num-menu-options-xs-$n_options'>
+		    <nav role='navigation' class='navbar navbar-jcr'>
+                <ul class='nav nav-jcr nav-num-menu-options-xs-$n_options'>
         ";
         sub_menu_items( $active_key, $options );
     echo "
@@ -186,7 +192,7 @@ function footer_bar()
 ?>
 	<div class="row">
         <footer class='footer'>
-            JCR is maintained by <a href="https://github.com/codalogic">codalogic</a><br>
+            json-content-rules.org is maintained by <a href="https://github.com/codalogic">codalogic</a>.<br>
             This page was derived from <a href="https://pages.github.com">GitHub Pages</a>, Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.<br>
             Copyright &copy; <?php echo @strftime("%Y");?>, <a href="https://codalogic.com">Codalogic Ltd</a>.
         </footer>
