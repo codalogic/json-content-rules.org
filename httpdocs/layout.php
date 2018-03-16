@@ -110,6 +110,7 @@ function menu_bar()
 function menu_items()
 {
 	menu_item( 'home', 'Home', './' );
+	menu_item( 'checker', 'JCR Checker', 'checker' );
 }
 
 function menu_item( $key, $label, $link )
@@ -191,5 +192,20 @@ function footer_bar()
         </footer>
     </div>
 <?php
+}
+
+function html_safe( $in )
+{
+    return htmlentities( $in, ENT_COMPAT | ENT_HTML401, 'UTF-8', false );
+}
+
+function html_safe_with_markup( $in )
+{
+    $ltkeep = '&ltkeep;';
+    $gtkeep = '&gtkeep;';
+    $in = preg_replace( '|<(/?)b>|', "$ltkeep$1b$gtkeep", $in );
+    $in = htmlentities( $in, ENT_COMPAT | ENT_HTML401, 'UTF-8', false );
+    $in = preg_replace( "|$ltkeep|", "<", $in );
+    return preg_replace( "|$gtkeep|", ">", $in );
 }
 ?>

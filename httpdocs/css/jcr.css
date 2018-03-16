@@ -16,3 +16,9 @@ code {
 pre {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", "Courier New", Courier, monospace;
 }
+.exe-out {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", "Courier New", Courier, monospace;
+}
+.humanity_check {
+  display: none;
+}
