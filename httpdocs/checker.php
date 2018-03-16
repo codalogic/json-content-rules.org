@@ -59,7 +59,7 @@ function mode_new()
 			Also, embarrassingly, blank lines are not taken into account when calculating line numbers for error messages!  Please bear this
 			in mind when try to find any reported errors.
 			<p>
-			Note: To protect the server, the maximum allowed JCR input size is $max_length bytes.
+			Note: To protect the server, the maximum allowed JCR input size is $max_length characters.
 			<p>
 			Enter the JCR to be checked here:
 			</p>
@@ -117,14 +117,14 @@ function show_form( $jcr_file = '' )
 {
 	echo "<form action='checker' method='post'>
 		<input type='hidden' name='op' value='compile' />
-		<textarea name='jcr' rows='15' cols='80' wrap='off'>";
+		<textarea name='jcr' rows='15' wrap='off'>";
 
 		if( $jcr_file != '' )
 			output_file( $jcr_file );
 			
 		echo "</textarea>\n";
 		humanity_check();
-		echo "	<input type='submit' value='Check...' />
+		echo "<br /><input type='submit' value='Check...' />
 			</form>\n";
 }
 
