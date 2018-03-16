@@ -28,6 +28,9 @@ pre {
 .humanity_check {
   display: none;
 }
+textarea {
+  width: 100%;
+}
 .header {
   border-bottom: 4px solid #F2F2F2;
   margin-bottom: 20px;
