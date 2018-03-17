@@ -33,7 +33,9 @@ function main_content()
 	if( ! isset($_REQUEST['op'] ) )
 		mode_new();
 	else if( $_REQUEST['op'] == 'compile' ) {
-	    if( isset( $_REQUEST['jcr'] ) && strlen( $_REQUEST['jcr'] ) > $max_length )
+	    if( isset( $_REQUEST['humanity_check'] ) && $_REQUEST['humanity_check'] != '' )
+	        mode_robot();
+		else if( isset( $_REQUEST['jcr'] ) && strlen( $_REQUEST['jcr'] ) > $max_length )
 			mode_too_big();
 		else
 			mode_compile();
@@ -63,6 +65,11 @@ function mode_new()
 			</p>
 			";
 	show_form();
+}
+
+function mode_robot()
+{
+	echo "<h3>Configuration error - Please report</h3>\n";
 }
 
 function mode_too_big()
