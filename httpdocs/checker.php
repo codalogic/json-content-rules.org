@@ -1,4 +1,5 @@
 <?php
+        // TODO: T180317_1556 - preg_replace() is a hack to fudge over line counting errors when when breaks are \r\n.  Remove when bug is fixed
 $config = array(
 			"title" => "JCR Checker",
 			"menu_key" => "checker",
@@ -32,7 +33,7 @@ function main_content()
 	if( ! isset($_REQUEST['op'] ) )
 		mode_new();
 	else if( $_REQUEST['op'] == 'compile' ) {
-		if( isset( $_REQUEST['jcr'] ) && strlen( $_REQUEST['jcr'] ) > $max_length )
+	    if( isset( $_REQUEST['jcr'] ) && strlen( $_REQUEST['jcr'] ) > $max_length )
 			mode_too_big();
 		else
 			mode_compile();
@@ -55,9 +56,6 @@ function mode_new()
 			The JCR Checker is a 'work in progress' and so not all JCR features are currently supported.  Currently, only the syntax is
 			checked.  Higher order functionality, such as checking specified target rules actually exist, and consistency of
 			referenced rules will be supported in a future version.
-			<p>
-			Also, embarrassingly, blank lines are not taken into account when calculating line numbers for error messages!  Please bear this
-			in mind when try to find any reported errors.
 			<p>
 			Note: To protect the server, the maximum allowed JCR input size is $max_length characters.
 			<p>
@@ -89,7 +87,8 @@ function mode_compile()
 	
     $file_base = store_jcr();
     if ($handle = fopen("$file_base.jcr", 'w')) {
-		fwrite($handle, stripslashes( $_REQUEST['jcr'] ) );
+        // TODO: T180317_1556 - preg_replace() is a hack to fudge over line counting errors when when breaks are \r\n.  Remove when bug is fixed
+		fwrite($handle, preg_replace( '/\r\n/', "\n", stripslashes( $_REQUEST['jcr'] ) ) );
 		fclose($handle);
     }
 	$cmd = "../private/bin/jcrcheck $file_base.jcr 2>&1";
