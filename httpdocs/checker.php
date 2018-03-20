@@ -1,5 +1,4 @@
 <?php
-        // TODO: T180317_1556 - preg_replace() is a hack to fudge over line counting errors when when breaks are \r\n.  Remove when bug is fixed
 $config = array(
 			"title" => "JCR Checker",
 			"menu_key" => "checker",
@@ -94,8 +93,7 @@ function mode_compile()
 	
     $file_base = store_jcr();
     if ($handle = fopen("$file_base.jcr", 'w')) {
-        // TODO: T180317_1556 - preg_replace() is a hack to fudge over line counting errors when when breaks are \r\n.  Remove when bug is fixed
-		fwrite($handle, preg_replace( '/\r\n/', "\n", stripslashes( $_REQUEST['jcr'] ) ) );
+		fwrite($handle, stripslashes( $_REQUEST['jcr'] ) );
 		fclose($handle);
     }
 	$cmd = "../private/bin/jcrcheck $file_base.jcr 2>&1";
