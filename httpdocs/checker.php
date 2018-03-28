@@ -54,8 +54,8 @@ function mode_new()
 			This page allows you to check a JCR ruleset on-line using the
 			<a href='https://github.com/codalogic/cl-jcr-parser' target='_blank'>Codalogic C++ JSON Content Rules Parser</a>.
 			<p>
-			The JCR Checker is a 'work in progress' and so not all JCR features are currently supported.  Currently, only the syntax is
-			checked.  Higher order functionality, such as checking specified target rules actually exist, and consistency of
+			The JCR Checker is a 'work in progress' and so not all JCR features are currently supported.  Currently, only the syntax and local rule linking is
+			checked.  Higher order functionality, such as checking consistency of
 			referenced rules will be supported in a future version.
 			<p>
 			Note: To protect the server, the maximum allowed JCR input size is $max_length characters.
