@@ -28,8 +28,17 @@ function main_content()
 				<h3>
 				<a id="specification" class="anchor" href="#specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specification</h3>
 
-				<p>For more details read the latest specification at
-				<a href="https://www.ietf.org/internet-drafts/draft-newton-json-content-rules-09.txt">draft-newton-json-content-rules-09.txt</a>.</p>
+				<p>
+				The latest specification submitted to the IETF are
+				<a href="drafts/draft-newton-json-content-rules-09.txt">draft-newton-json-content-rules-09.txt</a> and
+				<a href="drafts/draft-newton-json-content-rules-09.html">draft-newton-json-content-rules-09.html</a>.
+				</p>
+
+				<p>
+				The latest internal working drafts are
+				<a href="drafts/draft-newton-json-content-rules-10-pjc.txt">draft-newton-json-content-rules-10-pjc.txt</a> and
+				<a href="drafts/draft-newton-json-content-rules-10-pjc.html">draft-newton-json-content-rules-10-pjc.html</a>.
+				</p>
 
 				<p>JCR can also have co-constraints added to it via directives and annotations.  These are described in (expired)
 				<a href="drafts/draft-cordell-jcr-co-constraints-00.txt">draft-cordell-jcr-co-constraints-00.txt</a>.</p>

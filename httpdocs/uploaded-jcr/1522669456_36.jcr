@@ -1,0 +1,16 @@
+    $transfer = {
+
+      @{doc "An optional textual description of the transfer." }
+      "description" : string ,
+
+      @{doc "An optional declaration of the type of transfer, such as which
+            policy the transfer occured under." }
+      "type" : {
+
+        @{doc "A short signifier of the type. For example, a policy number."}
+        "signifier"     : string ,
+
+        @{doc "An optional textual description of the transfer type"}
+        "description" : string 
+      } 
+    }
