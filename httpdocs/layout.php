@@ -115,7 +115,8 @@ function menu_items()
 {
 	menu_item( 'home', 'Home', './' );
 	menu_item( 'tutorial', 'Tutorial', 'tutorial' );
-	menu_item( 'specs', 'Specifications &amp; Implementations', 'specs' );
+	menu_item( 'specs', 'Specifications', 'specs' );
+	menu_item( 'implementations', 'Implementations', 'implementations' );
 	menu_item( 'checker', 'JCR Checker', 'checker' );
 }
 
